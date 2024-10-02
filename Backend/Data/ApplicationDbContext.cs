@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Data
 {
+    //Database context class
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Category> People { get; set; }
