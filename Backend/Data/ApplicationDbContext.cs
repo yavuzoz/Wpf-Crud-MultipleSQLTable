@@ -11,12 +11,12 @@ namespace Backend.Data
     //Database context class
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Category> People { get; set; }
-        public DbSet<Product> DeliveryLocations { get; set; }
+        public DbSet<Category> Categories { get; set; } // Changed from People to Categories
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // SQL Server bağlantı dizesi kullanarak veritabanını bağlama
+            // SQL Server connection string
             optionsBuilder.UseSqlServer("Server=DESKTOP-VQGH9P1\\SQLEXPRESS;Database=MyDatabase;Trusted_Connection=True;TrustServerCertificate=True");
         }
     }

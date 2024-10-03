@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_Frontend"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Dashboard" Height="450" Width="800">
     <Grid>
+        <DockPanel LastChildFill="True">
+            <!-- Navigasyon Panel -->
+            <StackPanel Width="200" Background="LightGray" DockPanel.Dock="Left">
+                <!-- Dashboard Buton -->
+                <Button Content="Dashboard" Click="DashboardButton_Click"
+                        Width="200" Height="50" Background="DodgerBlue"
+                        Foreground="White" BorderBrush="Transparent"
+                        BorderThickness="0" Margin="0,10"/>
 
+                <!-- Kategori Buton -->
+                <Button Content="Category" Click="CategoryButton_Click"
+                        Width="200" Height="50" Background="DodgerBlue"
+                        Foreground="White" BorderBrush="Transparent"
+                        BorderThickness="0" Margin="0,10"/>
+
+                <!-- Product Buton -->
+                <Button Content="Product" Click="ProductButton_Click"
+                        Width="200" Height="50" Background="DodgerBlue"
+                        Foreground="White" BorderBrush="Transparent"
+                        BorderThickness="0" Margin="0,10"/>
+            </StackPanel>
+
+            <!-- İnhalt Kontrol -->
+            <ContentControl x:Name="contentControl" Margin="10"/>
+        </DockPanel>
     </Grid>
 </Window>

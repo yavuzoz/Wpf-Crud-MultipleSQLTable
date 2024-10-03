@@ -20,5 +20,34 @@ namespace Desktop_Frontend
         {
             InitializeComponent();
         }
+
+        private void DashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new TextBlock
+            {
+                Text = "Welcome to the Dashboard",
+                FontSize = 24,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new CategoryControl(UpdateCategoryList);
+        }
+
+        private void ProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new ProductControl();
+        }
+
+        private void UpdateCategoryList()
+        {
+            if (contentControl.Content is ProductControl productControl)
+            {
+                productControl.LoadCategories();
+            }
+        }
     }
 }
