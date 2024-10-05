@@ -46,14 +46,16 @@ namespace Desktop_Frontend
                 productGrid.ItemsSource = products;
             }
 
-            private void AddProduct_Click(object sender, RoutedEventArgs e)
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (cmbCategory.SelectedItem is Category selectedCategory)
             {
-                if (cmbCategory.SelectedItem is Category selectedCategory)
+                if (decimal.TryParse(txtPrice.Text, out decimal price))
                 {
                     var product = new Product
                     {
                         Name = txtName.Text,
-                        Price = decimal.Parse(txtPrice.Text),
+                        Price = price,
                         ManufactureDate = dpManufactureDate.SelectedDate.GetValueOrDefault(),
                         CategoryId = selectedCategory.Id
                     };
@@ -62,9 +64,15 @@ namespace Desktop_Frontend
                     _context.SaveChanges();
                     LoadProducts();
                 }
+                else
+                {
+                    MessageBox.Show("Please enter a valid price.");
+                }
             }
+        }
 
-            private void UpdateProduct_Click(object sender, RoutedEventArgs e)
+
+        private void UpdateProduct_Click(object sender, RoutedEventArgs e)
             {
                 if (productGrid.SelectedItem is Product selectedProduct)
                 {

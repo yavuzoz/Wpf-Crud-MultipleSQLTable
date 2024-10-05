@@ -8,13 +8,31 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-            <TextBox x:Name="txtCategoryName" Text="Category Name" Width="200" Margin="5"/>
+
+            <!-- TextBox with Watermark -->
+            <Grid Margin="5">
+                <!-- Watermark TextBlock -->
+                <TextBlock Text="Enter Category Name" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           IsHitTestVisible="False" 
+                           Margin="5"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtCategoryName, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <!-- Actual TextBox -->
+                <TextBox x:Name="txtCategoryName" Width="200" Margin="5"/>
+            </Grid>
+
+            <!-- Buttons for actions -->
             <WrapPanel>
                 <Button Content="Add Category" Click="AddCategory_Click" Margin="5"/>
                 <Button Content="Update Category" Click="UpdateCategory_Click" Margin="5"/>
                 <Button Content="Delete Category" Click="DeleteCategory_Click" Margin="5"/>
             </WrapPanel>
-            <DataGrid x:Name="categoryGrid" AutoGenerateColumns="True" Height="200" Margin="5"/>
+
+            <!-- DataGrid for displaying categories -->
+            <DataGrid x:Name="categoryGrid" AutoGenerateColumns="True" Height="200" Margin="5" SelectionChanged="CategoryGrid_SelectionChanged"/>
+
         </StackPanel>
     </Grid>
 </UserControl>
